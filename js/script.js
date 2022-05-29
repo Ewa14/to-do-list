@@ -29,10 +29,10 @@
             });
         });
 
-        const checkedButtons = document.querySelectorAll(".js-checkedButton");
+        const doneButtons = document.querySelectorAll(".js-doneButton");
 
-        checkedButtons.forEach((checkedButton, index) => {
-            checkedButton.addEventListener("click", () => {
+        doneButtons.forEach((doneButton, index) => {
+            doneButton.addEventListener("click", () => {
                 toggleTaskDone(index);
             });
         });
@@ -41,13 +41,12 @@
     const render = () => {
         let htmlInput = "";
 
-        for (const zadanie of tasks) {
+        for (const task of tasks) {
             htmlInput += `
-            <li class="tasks__item ${zadanie.done ? "tasks__item--done" : ""}" >
-            <button class="checkedButton js-checkedButton">Done</button>
-            ${zadanie.content}
-            <button class="deleteButton js-deleteButton">Usuń</button>
-
+            <li class="tasks__item">
+            <button class="tasks__button tasks__button--done js-doneButton">Done</button>
+            <span class="tasks__content ${task.done ? "tasks__content--done" : ""}"> ${task.content} </span>
+            <button class="tasks__button tasks__button--delete js-deleteButton">Delete</button>
             </li>
             `
         }
