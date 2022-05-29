@@ -1,0 +1,22 @@
+.tasks {
+    padding: 20px;
+    list-style-type: none;
+}
+
+.tasks__item {
+    padding: 20px 10px;
+    border-bottom: lightgrey solid 1px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.tasks__content {
+    justify-self: start;
+}
+
+.tasks__content--done {
+    text-decoration: line-through;
+}
