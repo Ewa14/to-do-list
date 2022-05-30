@@ -23,3 +23,7 @@ border: none;
 color: white;
 background-color: teal;
 }
+
+.form__button:active {
+    outline: solid 1px black;
+}
