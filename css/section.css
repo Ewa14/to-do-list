@@ -1,11 +1,11 @@
 .section {
     margin: 20px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .section__header {
     font-size: 20px;
     font-weight: 800;
     padding: 20px;
-    border-bottom: lightgrey solid 1px;
+    border-bottom: rgb(211, 211, 211) solid 1px;
 }

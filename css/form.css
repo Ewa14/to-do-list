@@ -18,10 +18,14 @@
 }
 
 .form__button {
-padding: 10px;
-border: none;
-color: white;
-background-color: teal;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: teal;
+}
+
+.form__button:hover {
+    cursor: pointer;
 }
 
 .form__button:active {
