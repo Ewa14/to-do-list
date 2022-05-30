@@ -56,6 +56,13 @@
         bindEvents();
     };
 
+    const clearForm = () => {
+        const formInput = document.querySelector(".js-newTask");
+        formInput.value = "";
+
+        formInput.focus();
+    };
+
     const onFormSubmit = (event) => {
         event.preventDefault();
 
@@ -64,7 +71,10 @@
         if (newTaskContent === "") {
             return;
         }
+        
         addNewTask(newTaskContent);
+
+        clearForm();
     };
 
     const init = () => {
