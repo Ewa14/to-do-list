@@ -1,39 +1,48 @@
 {
-    const tasks = [];
+    let tasks = [];
 
     const addNewTask = (newTaskContent) => {
-        tasks.push(
+        tasks = [
+            ...tasks,
             {
                 content: newTaskContent,
                 done: false,
-            });
+            },
+        ];
+
         render();
     };
 
-    const deleteTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+    const deleteTask = (deleteButtonIndex) => {
+        tasks = [
+            ...tasks.filter((task, taskIndex) => taskIndex !== deleteButtonIndex)
+        ]
         render();
     };
 
-    const toggleTaskDone = (index) => {
-        tasks[index].done = !tasks[index].done;
+    const toggleTaskDone = (doneButtonIndex) => {
+        tasks = [
+            ...tasks.slice(0, doneButtonIndex),
+            { ...tasks[doneButtonIndex], done: !tasks[doneButtonIndex].done },
+            ...tasks.slice(doneButtonIndex + 1),
+        ]
         render();
     };
 
     const bindEvents = () => {
         const deleteButtons = document.querySelectorAll(".js-deleteButton");
 
-        deleteButtons.forEach((deleteButton, index) => {
+        deleteButtons.forEach((deleteButton, deleteButtonIndex) => {
             deleteButton.addEventListener("click", () => {
-                deleteTask(index);
+                deleteTask(deleteButtonIndex);
             });
         });
 
         const doneButtons = document.querySelectorAll(".js-doneButton");
 
-        doneButtons.forEach((doneButton, index) => {
+        doneButtons.forEach((doneButton, doneButtonIndex) => {
             doneButton.addEventListener("click", () => {
-                toggleTaskDone(index);
+                toggleTaskDone(doneButtonIndex);
             });
         });
     };
@@ -92,6 +101,7 @@
     };
 
     init();
+
 };
 
 
