@@ -23,14 +23,20 @@
     border: none;
     color: white;
     background-color: rgb(0, 128, 0);
+    transition: 0.5s;
 }
 
 .tasks__button--delete {
     background-color: rgb(223, 47, 47);
 }
 
+.tasks__button--delete.tasks__button--delete:hover {
+    background-color: hsl(0, 100%, 61%);
+}
+
 .tasks__button:hover {
     cursor: pointer;
+    background-color: hsl(120, 100%, 35%);
 }
 
 .tasks__button:active {
