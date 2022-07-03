@@ -47,11 +47,11 @@
         });
     };
 
-    const render = () => {
-        let htmlInput = "";
+    const renderTasks = () => {
+        let htmlTasksInput = "";
 
         for (const task of tasks) {
-            htmlInput += `
+            htmlTasksInput += `
               <li class="tasks__item">
                 <button class="tasks__button js-doneButton">
                   ${task.done ? "✔" : ""}
@@ -66,7 +66,30 @@
             `
         }
 
-        document.querySelector(".js-tasks").innerHTML = htmlInput;
+        document.querySelector(".js-tasks").innerHTML = htmlTasksInput;
+    };
+
+    const renderButtons = () => {
+        let htmlButtonsInput = "";
+
+        if (tasks.length !== 0) {
+            htmlButtonsInput += `
+              <button class="section__button js-hideDoneButton">
+                Ukryj ukończone
+              </button>
+              <button class="section__button js-markAllDoneButton">
+                Ukończ wszystkie
+              </button>
+            `
+        }
+        else htmlButtonsInput = "";
+
+        document.querySelector(".js-buttonsContainer").innerHTML = htmlButtonsInput;
+    };
+
+    const render = () => {
+        renderTasks();
+        renderButtons();
 
         bindEvents();
     };
@@ -101,8 +124,4 @@
     };
 
     init();
-
 };
-
-
-
