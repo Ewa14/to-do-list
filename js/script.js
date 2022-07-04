@@ -93,7 +93,7 @@
               <button class="section__button js-hideDoneButton">
                 Ukryj ukończone
               </button>
-              <button class="section__button js-markAllDoneButton">
+              <button class="section__button js-markAllDoneButton" ${tasks.every(({done}) => done === true) ? "disabled" : ""}>
                 Ukończ wszystkie
               </button>
             `
@@ -109,8 +109,6 @@
 
         bindTaskButtonsEvents();
         bindSectionButtonsEvents();
-
-        console.log(tasks);
     };
 
     const clearForm = () => {

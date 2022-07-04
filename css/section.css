@@ -43,3 +43,7 @@
 .section__button:hover {
     color: hsl(180, 100%, 35%);
 }
+
+.section__button:disabled {
+    color: lightgray;
+}
