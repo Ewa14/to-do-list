@@ -8,4 +8,38 @@
     font-weight: 800;
     padding: 20px;
     border-bottom: rgb(211, 211, 211) solid 1px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+@media (max-width: 767px) {
+    .section__header {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+}
+
+.section__buttonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+@media (max-width: 767px) {
+    .section__buttonsContainer {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+}
+
+.section__button {
+    font-size: 18px;
+    border: none;
+    background: none;
+    color: teal;
+    transition: 0.5s;
+}
+
+.section__button:hover {
+    color: hsl(180, 100%, 35%);
 }
