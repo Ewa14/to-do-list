@@ -1,5 +1,6 @@
 {
     let tasks = [];
+    let hideDoneTasks = false;
 
     const addNewTask = (newTaskContent) => {
         tasks = [
@@ -8,8 +9,7 @@
                 content: newTaskContent,
                 done: false,
             },
-        ];
-
+        ]
         render();
     };
 
@@ -29,7 +29,14 @@
         render();
     };
 
-    const bindEvents = () => {
+    const markAllTasksDone = () => {
+        tasks = [
+            ...tasks.map(({ content }) => ({ content, done: true }))
+        ]
+        render();
+    };
+
+    const bindTaskButtonsEvents = () => {
         const deleteButtons = document.querySelectorAll(".js-deleteButton");
 
         deleteButtons.forEach((deleteButton, deleteButtonIndex) => {
@@ -45,6 +52,16 @@
                 toggleTaskDone(doneButtonIndex);
             });
         });
+    };
+
+    const bindSectionButtonsEvents = () => {
+        const markAllDoneButton = document.querySelector(".js-markAllDoneButton");
+
+        if (markAllDoneButton !== null) {
+            markAllDoneButton.addEventListener("click", () => {
+                markAllTasksDone();
+            });
+        };
     };
 
     const renderTasks = () => {
@@ -91,7 +108,10 @@
         renderTasks();
         renderButtons();
 
-        bindEvents();
+        bindTaskButtonsEvents();
+        bindSectionButtonsEvents();
+
+        console.log(tasks);
     };
 
     const clearForm = () => {
