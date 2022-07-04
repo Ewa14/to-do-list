@@ -2,6 +2,11 @@
     let tasks = [];
     let hideDoneTasks = false;
 
+    toggleHideDoneTasks = () => {
+        hideDoneTasks = !hideDoneTasks;
+        render();
+    };
+
     const addNewTask = (newTaskContent) => {
         tasks = [
             ...tasks,
@@ -9,14 +14,14 @@
                 content: newTaskContent,
                 done: false,
             },
-        ]
+        ];
         render();
     };
 
     const deleteTask = (deleteButtonIndex) => {
         tasks = [
             ...tasks.filter((task, taskIndex) => taskIndex !== deleteButtonIndex)
-        ]
+        ];
         render();
     };
 
@@ -25,13 +30,12 @@
             ...tasks.slice(0, doneButtonIndex),
             { ...tasks[doneButtonIndex], done: !tasks[doneButtonIndex].done },
             ...tasks.slice(doneButtonIndex + 1),
-        ]
+        ];
         render();
     };
 
     const markAllTasksDone = () => {
-        tasks = tasks.map(task => ({ ...task, done: true }))
-
+        tasks = tasks.map(task => ({ ...task, done: true }));
         render();
     };
 
@@ -56,11 +60,19 @@
     const bindSectionButtonsEvents = () => {
         const markAllDoneButton = document.querySelector(".js-markAllDoneButton");
 
-        if (markAllDoneButton !== null) {
+        if (markAllDoneButton) {
             markAllDoneButton.addEventListener("click", () => {
                 markAllTasksDone();
             });
-        };
+        }
+
+        const hideDoneButton = document.querySelector(".js-hideDoneButton");
+
+        if (hideDoneButton && tasks.some(({done}) => done)) {
+            hideDoneButton.addEventListener("click", () => {
+                toggleHideDoneTasks();
+            });
+        }
     };
 
     const renderTasks = () => {
@@ -68,7 +80,7 @@
 
         for (const task of tasks) {
             htmlTasksInput += `
-              <li class="tasks__item">
+              <li class="tasks__item ${task.done && hideDoneTasks ? "tasks__item--hidden" : ""}">
                 <button class="tasks__button js-doneButton">
                   ${task.done ? "✔" : ""}
                 </button>
@@ -91,9 +103,9 @@
         if (tasks.length !== 0) {
             htmlButtonsInput += `
               <button class="section__button js-hideDoneButton">
-                Ukryj ukończone
+                ${hideDoneTasks ? "Pokaż" : "Ukryj"} ukończone
               </button>
-              <button class="section__button js-markAllDoneButton" ${tasks.every(({done}) => done === true) ? "disabled" : ""}>
+              <button class="section__button js-markAllDoneButton"${tasks.every(({ done }) => done) ? " disabled" : ""}>
                 Ukończ wszystkie
               </button>
             `
