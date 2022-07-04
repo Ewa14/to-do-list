@@ -5,10 +5,11 @@ https://ewa14.github.io/to-do-list/
 This website lets you create a simple to-do list. You can add new tasks, mark them as done, or delete them.
 
 To add a new task, enter the data into the active form field, then click "Enter" or "Dodaj zadanie" button.
-
 To mark the task as completed, use the green button on its left. 
-
 To delete a task, use the red button on its right.
+
+Clicking the "Ukończ wszystkie" button marks all of the tasks as done.
+Additionally, you can hide/show all completed tasks with the "Ukryj/Pokaż ukończone" button.
 ## Technologies used
 - HTML
 - CSS (grid, media queries)
