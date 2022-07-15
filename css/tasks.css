@@ -42,7 +42,3 @@
     cursor: pointer;
     background-color: hsl(120, 100%, 35%);
 }
-
-.tasks__button:active {
-    outline: solid 1px black;
-}

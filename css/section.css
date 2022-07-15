@@ -44,10 +44,6 @@
     color: hsl(180, 100%, 35%);
 }
 
-.section__button:active {
-    outline: solid 1px black;
-}
-
 .section__button:disabled {
     color: lightgray;
 }
